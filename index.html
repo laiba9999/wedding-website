@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laiba & Aamir | August 31st</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --sage: #9BA886;
+            --forest: #4A5D4E;
+            --gold: #D4AF37;
+            --charcoal: #2C2C2C;
+            --soft-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(155, 168, 134, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--forest);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(155, 168, 134, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                var(--cream);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(155, 168, 134, 0.03) 2px, rgba(155, 168, 134, 0.03) 4px);
+            pointer-events: none;
+        }
+
+        .ornament {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .ampersand {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--gold);
+            margin: 0 0.5rem;
+            font-style: italic;
+        }
+
+        .date {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .venue-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .location {
+            font-size: 1rem;
+            color: var(--sage);
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.2s forwards;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--forest);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem auto 0;
+        }
+
+        /* Save the Date */
+        #save-date {
+            background: linear-gradient(135deg, rgba(155, 168, 134, 0.08) 0%, rgba(212, 175, 55, 0.05) 100%);
+            text-align: center;
+        }
+
+        .save-date-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .save-date-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--forest);
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: var(--charcoal);
+        }
+
+        /* Venue Section */
+        #venue {
+            background: var(--cream);
+        }
+
+        .venue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .venue-card {
+            background: var(--soft-white);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .venue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .venue-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+        }
+
+        .venue-card p {
+            color: var(--charcoal);
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .venue-highlight {
+            color: var(--sage);
+            font-weight: 500;
+        }
+
+        /* Timeline Section */
+        #timeline {
+            background: linear-gradient(to bottom, var(--cream) 0%, rgba(155, 168, 134, 0.05) 50%, var(--cream) 100%);
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--sage));
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-time {
+            flex: 1;
+            text-align: right;
+            padding-right: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .timeline-item:nth-child(even) .timeline-time {
+            text-align: left;
+            padding-left: 3rem;
+            padding-right: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 3rem;
+            background: var(--soft-white);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-left: 3rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: 3rem;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border: 3px solid var(--cream);
+            border-radius: 50%;
+            top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest);
+            color: var(--cream);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-time {
+                text-align: left !important;
+                padding: 0 0 0.5rem 3rem !important;
+            }
+
+            .timeline-content {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 3rem;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .venue-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#save-date">Save the Date</a></li>
+            <li><a href="#venue">Venue</a></li>
+            <li><a href="#timeline">What to Expect</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div style="position: relative; margin-bottom: 3rem; opacity: 0; animation: fadeInUp 1s ease 0.3s forwards;">
+            <img src="/IMG_4718.JPG" alt="Laiba and Aamir" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); border: 8px solid white;">
+        </div>
+        
+        <h1 class="names">
+            Laiba <span class="ampersand">&</span> Aamir
+        </h1>
+        <p class="date">August 31st, 2026</p>
+        <h2 class="venue-name">Stock Brook Manor</h2>
+        <p class="location">Billericay, Essex</p>
+    </section>
+
+    <section id="save-date">
+        <h2 class="section-title">Save the Date</h2>
+        <div class="save-date-content">
+            <p class="save-date-text">
+                We're thrilled to invite you to celebrate our special day with us. 
+                Please take a moment to let us know if you can join us by completing our RSVP form.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUjLNrF60SbutPhuoS4m8avU1ColkfZl0Fcb6Pbw-6CYL23w/viewform?usp=publish-editor" 
+               class="cta-button" 
+               target="_blank">
+               RSVP Now
+            </a>
+        </div>
+    </section>
+
+    <section id="venue">
+        <h2 class="section-title">The Venue</h2>
+        <div class="venue-grid">
+            <div class="venue-card">
+                <h3>Stock Brook Manor</h3>
+                <p>A stunning country house hotel set in 35 acres of beautiful Essex countryside.</p>
+                <p>This elegant manor house combines historic charm with modern luxury, providing the perfect backdrop for our celebration.</p>
+                <p class="venue-highlight">Plenty of parking spaces available</p>
+            </div>
+            <div class="venue-card">
+                <h3>Getting There</h3>
+                <p><strong>Address:</strong><br>
+                Queens Park Avenue<br>
+                Billericay, Essex<br>
+                CM12 0SP</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Stock+Brook+Manor+Queens+Park+Avenue+Billericay+Essex+CM12+0SP" 
+                   target="_blank" 
+                   style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: var(--forest); color: var(--soft-white); text-decoration: none; border-radius: 2px; font-size: 0.9rem; letter-spacing: 1px; transition: all 0.3s ease;">
+                   VIEW ON MAP
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <h2 class="section-title">What to Expect</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-time">3:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Dhuhr Salah</h3>
+                    <p>We will hold a congregational Dhuhr prayer for our guests who have travelled from afar and may have missed their Salah (Nikkah guests only).</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">3:30 PM</div>
+                <div class="timeline-content">
+                    <h3>Nikkah Ceremony</h3>
+                    <p>We will hold our Islamic marriage ceremony outdoors in the gardens, with attendance reserved for Nikkah guests only.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">5:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Main Guest Arrival</h3>
+                    <p>Welcome drinks and canapés in the beautiful gardens.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">5:30 PM</div>
+                <div class="timeline-content">
+                    <h3>Welcome to Main Hall</h3>
+                    <p>Guests are welcomed into the main hall for the evening celebrations.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">6:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Groom Entrance</h3>
+                    <p>The groom makes his entrance.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">6:20 PM</div>
+                <div class="timeline-content">
+                    <h3>Bridal Entrance</h3>
+                    <p>The bride makes her entrance.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">6:30 PM</div>
+                <div class="timeline-content">
+                    <h3>Dinner Service</h3>
+                    <p>A delicious feast is served to all our guests, followed by traditional Kashmiri pink chai.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">10:00 PM</div>
+                <div class="timeline-content">
+                    <h3>Rukhsati</h3>
+                    <p>The traditional farewell ceremony as the bride departs with the groom, marking the conclusion of our special day.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-names">Laiba & Aamir</div>
+        <div class="footer-text">AUGUST 31ST, 2026</div>
+        <a href="https://photos.app.goo.gl/vSspc1Rkk3KatwMe8" 
+           target="_blank" 
+           style="display: inline-block; margin-top: 1.5rem; padding: 0.8rem 2rem; background: var(--gold); color: var(--charcoal); text-decoration: none; border-radius: 2px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease;">
+           VIEW WEDDING ALBUM
+        </a>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active state to nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = 'var(--gold)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
