@@ -283,85 +283,73 @@
         .timeline-container {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--gold), var(--sage));
         }
 
         .timeline-item {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-bottom: 3rem;
             position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
         }
 
-        .timeline-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
 
         .timeline-time {
-            flex: 1;
-            text-align: right;
-            padding-right: 3rem;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--gold);
-        }
-
-        .timeline-item:nth-child(even) .timeline-time {
-            text-align: left;
-            padding-left: 3rem;
-            padding-right: 0;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
         .timeline-content {
-            flex: 1;
-            padding-left: 3rem;
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem 2.5rem;
             background: var(--soft-white);
-            padding: 2rem;
-            border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            margin-left: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border: 1px solid rgba(155, 168, 134, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 0;
-            margin-right: 3rem;
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .timeline-content h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--forest);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         .timeline-content p {
             color: var(--charcoal);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
+            width: 12px;
+            height: 12px;
             background: var(--gold);
-            border: 3px solid var(--cream);
+            border: 3px solid var(--forest);
             border-radius: 50%;
-            top: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 0 0 4px var(--cream);
         }
 
         /* Footer */
@@ -418,28 +406,8 @@
                 font-size: 0.75rem;
             }
 
-            .timeline-container::before {
-                left: 20px;
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                flex-direction: column;
-            }
-
-            .timeline-time {
-                text-align: left !important;
-                padding: 0 0 0.5rem 3rem !important;
-            }
-
             .timeline-content {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                padding-left: 3rem;
-            }
-
-            .timeline-dot {
-                left: 20px;
+                padding: 1.5rem;
             }
 
             .venue-grid {
@@ -454,13 +422,15 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#save-date">Save the Date</a></li>
             <li><a href="#venue">Venue</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#seating">Seating Plan</a></li>
             <li><a href="#timeline">What to Expect</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
         <div style="position: relative; margin-bottom: 3rem; opacity: 0; animation: fadeInUp 1s ease 0.3s forwards;">
-            <img src="/IMG_4718.JPG" alt="Laiba and Aamir" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); border: 8px solid white;">
+            <img src="IMG_4718.JPG" alt="Laiba and Aamir" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); border: 8px solid white;">
         </div>
         
         <h1 class="names">
@@ -510,80 +480,106 @@
         </div>
     </section>
 
+    <section id="menu">
+        <h2 class="section-title">Menu</h2>
+        <div class="venue-grid">
+            <div class="venue-card">
+                <h3>Canapés</h3>
+                <p>Lamb Tikka<br>
+                Mini Slider<br>
+                Veg Spring Roll<br>
+                Vegetable Parcels</p>
+            </div>
+            <div class="venue-card">
+                <h3>Starters</h3>
+                <p>Papri Chaat<br>
+                Seekh Kebab<br>
+                Chilli Chicken<br>
+                Vegetable Spring Rolls</p>
+            </div>
+            <div class="venue-card">
+                <h3>Main Course</h3>
+                <p>Butter Chicken<br>
+                Lamb Karahi<br>
+                Aloo Baingan<br>
+                Chicken Biryani<br>
+                Naan</p>
+            </div>
+            <div class="venue-card">
+                <h3>Dessert</h3>
+                <p>I am undecided about what to pick for the dessert so I would love for the attendees to vote for their favourite! Please add your selection to the RSVP sheet - the winning dessert will be served on the day.</p>
+            </div>
+        </div>
+    </section>
+
     <section id="timeline">
         <h2 class="section-title">What to Expect</h2>
         <div class="timeline-container">
             <div class="timeline-item">
-                <div class="timeline-time">3:00 PM</div>
-                <div class="timeline-content">
-                    <h3>Dhuhr Salah</h3>
-                    <p>We will hold a congregational Dhuhr prayer for our guests who have travelled from afar and may have missed their Salah (Nikkah guests only).</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-time">3:30 PM</div>
-                <div class="timeline-content">
-                    <h3>Nikkah Ceremony</h3>
-                    <p>We will hold our Islamic marriage ceremony outdoors in the gardens, with attendance reserved for Nikkah guests only.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-
-            <div class="timeline-item">
                 <div class="timeline-time">5:00 PM</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Main Guest Arrival</h3>
                     <p>Welcome drinks and canapés in the beautiful gardens.</p>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-time">5:30 PM</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Welcome to Main Hall</h3>
                     <p>Guests are welcomed into the main hall for the evening celebrations.</p>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-time">6:00 PM</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Groom Entrance</h3>
                     <p>The groom makes his entrance.</p>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-time">6:20 PM</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Bridal Entrance</h3>
                     <p>The bride makes her entrance.</p>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-time">6:30 PM</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Dinner Service</h3>
                     <p>A delicious feast is served to all our guests, followed by traditional Kashmiri pink chai.</p>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-time">10:00 PM</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Rukhsati</h3>
                     <p>The traditional farewell ceremony as the bride departs with the groom, marking the conclusion of our special day.</p>
                 </div>
-                <div class="timeline-dot"></div>
             </div>
+        </div>
+    </section>
+
+    <section id="seating">
+        <h2 class="section-title">Seating Plan</h2>
+        <div class="save-date-content">
+            <p class="save-date-text" style="font-size: 1.5rem; color: var(--forest); font-weight: 600;">
+                TBC
+            </p>
+            <p class="save-date-text">
+                The seating plan will be available closer to the wedding day.
+            </p>
         </div>
     </section>
 
